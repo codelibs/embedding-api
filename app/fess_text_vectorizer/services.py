@@ -13,6 +13,9 @@ class EmbeddingService:
         self._vectorizers["en"] = TransformerVectorizer("en_core_web_trf")
         self._vectorizers["ja"] = TransformerVectorizer("ja_ginza_electra")
 
+    def get_languages(self) -> List[str]:
+        return list(self._vectorizers.keys())
+
     def vectorize(self, docs: Docs) -> List[Dict[str, Any]]:
         results: List[Dict[str, Any]] = []
         # TODO bulk

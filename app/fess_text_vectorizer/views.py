@@ -12,8 +12,11 @@ api_router = APIRouter()
 
 
 @api_router.get('/')
-async def index():
-    return {"version": fess_text_vectorizer.__version__}
+async def index(embedding_service: EmbeddingService = Depends(get_embedding_service)):
+    return {
+        "version": fess_text_vectorizer.__version__,
+        "languages": embedding_service.get_languages()
+    }
 
 
 @api_router.get('/ping')
