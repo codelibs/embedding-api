@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 from fastapi import APIRouter, Depends
 
 import fess_text_vectorizer
-from fess_text_vectorizer.models import Docs
+from fess_text_vectorizer.models import Doc, Docs
 
 from .services import EmbeddingService, get_embedding_service
 
@@ -18,8 +18,8 @@ async def index():
 
 @api_router.get('/ping')
 async def ping(embedding_service: EmbeddingService = Depends(get_embedding_service)):
-    results: List[Dict[str, Any]] = embedding_service.vectorize(
-        [{"lang": "en", "content": "test"}])
+    docs: Docs = Docs(data=[Doc(lang="en", content="test")])
+    results: List[Dict[str, Any]] = embedding_service.vectorize(docs)
     return {"status": "ok" if results[0].get("content") is not None else "fail"}
 
 
