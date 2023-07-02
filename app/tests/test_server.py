@@ -1,4 +1,4 @@
-from fess_text_vectorizer import __version__
+from embedding_api import __version__
 
 
 def test_version():

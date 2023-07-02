@@ -1,16 +1,12 @@
 [tool.poetry]
-name = "fess-text-vectorizer"
-version = "0.1.0"
-description = "Embedding Server for Fess"
+name = "embedding-api"
+version = "0.2.0"
+description = "Embedding Server"
 authors = ["CodeLibs, Inc. <info@codelibs.co>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-ginza = "5.1.0"
-ja-ginza-electra = "5.1.0"
-transformers = "4.12.5"
-spacy-transformers = "1.1.4"
-ginza-transformers = "0.4.1"
+python = "^3.10"
+sentence-transformers = "2.2.2"
 fastapi = "0.74.1"
 uvicorn = "0.17.5"
 

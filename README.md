@@ -1,30 +1,30 @@
-# Sentence Encoding/Embedding Serving Server for Fess
+# Sentence Embedding Serving Server
 
 ## Getting Started
 
 ### Run Docker
 
 ```
-docker run -p 8900:8900 -it ghcr.io/codelibs/fess-text-vectorizer:snapshot
+docker run -p 8080:8080 -it ghcr.io/codelibs/embedding-api:snapshot
+```
+
+#### Use Model Cache
+
+```
+docker run -v ./model:/code/model -p 8080:8080 -it ghcr.io/codelibs/embedding-api:snapshot
 ```
 
 ### Request
 
 ```
-curl -s -H "Content-Type:application/json" -XPOST localhost:8900/vectorize -d '
+curl -s -H "Content-Type:application/json" -XPOST localhost:8080/encode -d '
 {
-  "data": [
-    {
-      "lang": "en",
-      "content": "This is a pen."
-    },
-    {
-      "lang": "ja",
-      "content": "今日の天気は晴れです。"
-    }
+  "sentences": [
+    "This framework generates embeddings for each input sentence",
+    "Sentences are passed as a list of string.",
+    "The quick brown fox jumps over the lazy dog."
   ]
-}
-'
+}'
 ```
 
 ## Build
@@ -32,6 +32,6 @@ curl -s -H "Content-Type:application/json" -XPOST localhost:8900/vectorize -d '
 ### Build Docker
 
 ```
-docker build --rm -t ghcr.io/codelibs/fess-text-vectorizer:snapshot .
+docker build --rm -t ghcr.io/codelibs/embedding-api:snapshot .
 ```
 
