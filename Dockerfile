@@ -1,4 +1,4 @@
-FROM python:3.10 as builder
+FROM python:3.10-slim as builder
 
 RUN pip install poetry==1.5.1
 
@@ -6,11 +6,10 @@ COPY ./app /tmp/app
 WORKDIR /tmp/app/
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.10
+FROM python:3.10-slim
 
 COPY --from=builder /tmp/app/requirements.txt /code/requirements.txt
-RUN pip install --upgrade pip==23.1.2 && \
-    pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
     mkdir -p /code/model
 
 COPY ./app /code/app
