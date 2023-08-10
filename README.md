@@ -8,6 +8,12 @@
 docker run -p 8080:8080 -it ghcr.io/codelibs/embedding-api:snapshot
 ```
 
+### Run Docker with Model Name
+
+```
+docker run -p 8080:8080 -e MODEL_NAME=intfloat/multilingual-e5-large -it ghcr.io/codelibs/embedding-api:snapshot
+```
+
 #### Use Model Cache
 
 ```
