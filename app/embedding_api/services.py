@@ -14,7 +14,9 @@ class EmbeddingService:
         self._model_name: str = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
         logger.info(f"Loading {self._model_name}")
         cache_dir: str = os.getenv("MODEL_CACHE_DIR", "/code/model")
-        self._model = SentenceTransformer(self._model_name, cache_folder=cache_dir)
+        device: str = os.getenv("DEVICE", "cpu")
+        self._model = SentenceTransformer(
+            self._model_name, cache_folder=cache_dir, device=device)
 
     def get_model_name(self) -> str:
         return self._model_name
