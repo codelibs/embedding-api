@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class EmbeddingService:
     def __init__(self) -> None:
-        self._model_name: str = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
+        self._model_name: str = os.getenv("MODEL_NAME", "intfloat/multilingual-e5-base")
         logger.info(f"Loading {self._model_name}")
         cache_dir: str = os.getenv("MODEL_CACHE_DIR", "/code/model")
         device: str = os.getenv("DEVICE", "cpu")

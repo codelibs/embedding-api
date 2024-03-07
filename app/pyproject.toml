@@ -1,17 +1,17 @@
 [tool.poetry]
 name = "embedding-api"
-version = "1.0.0"
+version = "1.0.1"
 description = "Embedding Server"
 authors = ["CodeLibs, Inc. <info@codelibs.co>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-sentence-transformers = "2.2.2"
-fastapi = "0.74.1"
-uvicorn = "0.17.5"
+sentence-transformers = "2.5.1"
+fastapi = "0.110.0"
+uvicorn = "0.27.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^8.0.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
